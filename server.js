@@ -16,7 +16,8 @@ app.use((req, res, next) => {
 // app.use('/index', indexRoutes);
    // localhost:3000/index
 
-app.use('/', require('./routes'));
+// Uses all 'routes' files
+   app.use('/', require('./routes'));
 
 mongodb.initDb((err, mongodb) => {
     if (err) {
