@@ -4,7 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const mongodb = require('./db/connect');
 const indexRoutes = require('./routes/index');
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 const app = express();
 
 // Use the routes
@@ -13,11 +13,11 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
 });
-// app.use('/index', indexRoutes);
-   // localhost:8080/index
+app.use('/index', indexRoutes);
+   // localhost:3000/index
 
 // Uses all 'routes' files
-   app.use('/', require('./routes'));
+app.use('/', require('./routes'));
 
 mongodb.initDb((err, mongodb) => {
     if (err) {
